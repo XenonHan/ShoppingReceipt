@@ -10,10 +10,10 @@ import utils.Helper_fun;
 import java.util.Iterator;
 
 public class ShoppingCartManager {
-    TaxManager tax_manager;
-    Tax state;
-    ProductManager productManager;
-    Receipt receipt;
+    private final TaxManager tax_manager;
+    private Tax state;
+    private final ProductManager productManager;
+    private Receipt receipt;
 
     public ShoppingCartManager(String path){
         this.tax_manager = new TaxManager();
@@ -30,6 +30,7 @@ public class ShoppingCartManager {
         Iterator<Row> row_it = sheet.iterator();
         String tax_state = null;
         String product = null;
+        Object res;
         double price = 0;
         int qty = 0;
         row_it.next(); //skip header
@@ -52,10 +53,12 @@ public class ShoppingCartManager {
                         product = (String) Helper_fun.getCellValue(cell);
                         break;
                     case 2:
-                        price = (double) Helper_fun.getCellValue(cell);
+                        res = Helper_fun.getCellValue(cell);
+                        price = res!=null? (double) res: 0;
                         break;
                     case 3:
-                        qty = (int)((double) Helper_fun.getCellValue(cell));
+                        res = Helper_fun.getCellValue(cell);
+                        qty = res!=null? (int)((double) res): 0;
                         break;
                 }
             }
@@ -68,7 +71,7 @@ public class ShoppingCartManager {
 
     // Create the receipt and all required statistics
     public void receiptProducer(){
-        System.out.print("Producing receipt"+"...");
+        System.out.print("producing receipt"+"...");
         double subtotal = productManager.calSubTotal();
         double tax = productManager.calTax(state);
         this.receipt = new Receipt(subtotal, tax);

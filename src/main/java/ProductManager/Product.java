@@ -1,10 +1,11 @@
 package ProductManager;
 
 public class Product {
-    String name;
+    private final String name;
+    private final double price;
+    private final int qty;
+
     String category;
-    double price;
-    int qty;
 
     public Product(String name, double price, int qty, String category){
         this.name = name;

@@ -9,7 +9,8 @@ import java.util.HashMap;
 
 // this class load the tax info of various states from Tax.json
 public class TaxManager {
-    HashMap<String, Tax> tax_list;
+    private final HashMap<String, Tax> tax_list;
+    @SuppressWarnings("unchecked")
     public TaxManager(){
         tax_list = new HashMap<>();
         System.out.print("loading tax data...");
@@ -42,5 +43,6 @@ public class TaxManager {
     public Tax getTax(String state){
         return tax_list.get(state);
     }
+
 
 }

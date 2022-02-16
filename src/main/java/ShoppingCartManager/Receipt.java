@@ -3,9 +3,9 @@ package ShoppingCartManager;
 import utils.Helper_fun;
 
 public class Receipt {
-    double subtotal;
-    double tax;
-    double total;
+    private final double subtotal;
+    private final double tax;
+    private final double total;
 
     public Receipt(double subtotal, double tax){
         this.subtotal = subtotal;

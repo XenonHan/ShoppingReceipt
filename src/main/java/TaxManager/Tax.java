@@ -5,14 +5,14 @@ import java.util.List;
 
 // This class is used to store the tax rate and exempted categories a state in US
 public class Tax {
-    final String state;
-    double tax_rate;
-    HashSet exempted_cat;
+    private final String state;
+    private final double tax_rate;
+    private final HashSet <String> exempted_cat;
 
-    public Tax(String state, double tax_rate, String cat[]){
+    public Tax(String state, double tax_rate, String [] cat){
         this.state = state;
         this.tax_rate = tax_rate;
-        this.exempted_cat = new HashSet<String>(List.of(cat));
+        this.exempted_cat = new HashSet<>(List.of(cat));
     }
 
     public double getTax_rate() {

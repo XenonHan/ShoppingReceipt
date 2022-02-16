@@ -12,8 +12,9 @@ import java.util.List;
 
 // This class classify different products to their categories
 public class ProductManager {
-    HashMap<String, String> product_cat;
-    List<Product> product_list = new ArrayList<>();
+    private final HashMap<String, String> product_cat;
+    private final List<Product> product_list = new ArrayList<>();
+    @SuppressWarnings("unchecked")
     public ProductManager(){
         product_cat = new HashMap<>();
         System.out.print("loading product categories...");
@@ -25,6 +26,7 @@ public class ProductManager {
     }
 
     // match a product with its categories, then store in product_cat
+
     public void parseCategories(JSONObject arr){
         String cat = (String) arr.get("category");
         JSONArray product_list = (JSONArray) arr.get("product");
@@ -57,7 +59,6 @@ public class ProductManager {
     // cal the subtotal of all products store in product_list
     public double calSubTotal(){
         double subtotal = 0;
-        double tax = 0;
         for(Product product:product_list){
             subtotal += product.totalPrice();
         }
