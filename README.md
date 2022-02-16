@@ -1,9 +1,15 @@
 # Shopping Receipt
-This is a shopping receipt program that allow you to print the receipt from a transaction record.
+This program prints the receipt according to the shopping cart record. The sales tax also included in the receipt based on different locations and product categories.   
 <h2> To run the program </h2>
-1. Import this maven project into your ide <br>
-2. Go to \src\main\java and run the Main.java <br>
+1. Import this maven project to your ide <br>
+2. Run Main.java under "src\main\java". <br>
 3. Input the transaction file name e.g. transaction_1
+
+<h3> Run on terminal </h3>
+1. cd to the project directory <br>
+2. Run command "mvn compile" <br>
+3. Run command "mvn exec:java -Dexec.mainClass=Main" <br>
+4. Input the transaction file name e.g. transaction_1
 <h3> Preview </h3>
 
 <p float="left">
@@ -22,7 +28,7 @@ This is a shopping receipt program that allow you to print the receipt from a tr
   <img src="https://user-images.githubusercontent.com/55251580/154288079-324bf1e8-aa74-430c-82f7-284463d5a13d.png" width="500" />
 </p>
 
-<h2> To modify/add tax rate</h2>
+<h2> To modify/add tax rate of a location</h2>
 1. Go to directory "/src/main/java/config/"  <br>
 2. Open tax.json and modify
 <h3> Preview </h3>
@@ -41,8 +47,8 @@ This is a shopping receipt program that allow you to print the receipt from a tr
 </p>
 
 <h2> Coverage Report </h2>
-1. Go to the home directory of this project
-2. run "mvn test"
+1. Go to the home directory of this project <br>
+2. run "mvn test" <br>
 3. Open the index.html under ./target/site/jacoco
 <h3> Preview </h3>
 
