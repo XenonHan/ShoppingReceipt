@@ -1,0 +1,21 @@
+[
+  {
+    "category": "food",
+    "product": [
+      "potato chips"
+    ]
+  },
+  {
+    "category": "clothing",
+    "product": [
+      "shirt"
+    ]
+  },
+  {
+    "category": "other",
+    "product": [
+      "pencil",
+      "book"
+    ]
+  }
+]
