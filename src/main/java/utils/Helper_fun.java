@@ -1,7 +1,5 @@
 package utils;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -54,7 +52,7 @@ public class Helper_fun {
     }
 
     // get xlsx cell value
-    public static @Nullable Object getCellValue(@NotNull Cell cell){
+    public static Object getCellValue(Cell cell){
         switch (cell.getCellType()){
             case STRING:
                 return cell.getStringCellValue();
