@@ -67,7 +67,6 @@ public class HelperFunction {
 
     // roundup the value to nearest 0.05
     public static BigDecimal myRound(BigDecimal value){
-//        return value.multiply(BigDecimal.valueOf(20)).setScale(0, RoundingMode.CEILING).divide(BigDecimal.valueOf(20),RoundingMode.UNNECESSARY);
         return BigDecimal.valueOf(Math.ceil(value.doubleValue()*20)/20);
     }
 

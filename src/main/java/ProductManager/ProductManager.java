@@ -42,7 +42,7 @@ public class ProductManager {
     // Get the category of a product
     public String getCategory(String product){
         String cat = productCategories.get(product);
-        return cat!=null?cat:"others";
+        return cat!=null?cat:"other";
     }
 
     // Create new product and store in product_list
