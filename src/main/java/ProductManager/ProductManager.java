@@ -4,23 +4,24 @@ import TaxManager.Tax;
 import config.env;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import utils.Helper_fun;
+import utils.HelperFunction;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 // This class classify different products to their categories
 public class ProductManager {
-    private final HashMap<String, String> product_cat;
-    private final List<Product> product_list = new ArrayList<>();
+    private final HashMap<String, String> productCategories;
+    private final List<Product> productList = new ArrayList<>();
     @SuppressWarnings("unchecked")
     public ProductManager(){
-        product_cat = new HashMap<>();
+        productCategories = new HashMap<>();
         System.out.print("loading product categories...");
 
         //load categories.json
-        JSONArray product_arr = Helper_fun.load_json(env.config_path + "/categories.json");
+        JSONArray product_arr = HelperFunction.load_json(env.config_path + "/categories.json");
         product_arr.forEach(data -> parseCategories((JSONObject) data));
         System.out.println("Done");
     }
@@ -31,50 +32,50 @@ public class ProductManager {
         String cat = (String) arr.get("category");
         JSONArray product_list = (JSONArray) arr.get("product");
         String[] products = new String[product_list.size()];
-        Helper_fun.JSONArray_to_list(product_list).toArray(products);
+        HelperFunction.JSONArray_to_list(product_list).toArray(products);
         for(String product : products){
-            product_cat.put(product,cat);
+            productCategories.put(product,cat);
         }
 
     }
 
     // Get the category of a product
     public String getCategory(String product){
-        String cat = product_cat.get(product);
+        String cat = productCategories.get(product);
         return cat!=null?cat:"others";
     }
 
     // Create new product and store in product_list
-    public void addProduct(String name, double price, int qty){
+    public void addProduct(String name, BigDecimal price, int qty){
         if (name==null) return;
         String cat = getCategory(name);
         Product product = new Product(name, price, qty, cat);
-        product_list.add(product);
+        productList.add(product);
     }
 
     public void show(){
-        product_list.forEach(i->i.show());
+        productList.forEach(i->i.show());
     }
 
     // cal the subtotal of all products store in product_list
-    public double calSubTotal(){
-        double subtotal = 0;
-        for(Product product:product_list){
-            subtotal += product.totalPrice();
+    public BigDecimal calSubTotal(){
+        BigDecimal subtotal = new BigDecimal(0);
+        for(Product product:productList){
+            subtotal = subtotal.add(product.totalPrice());
         }
         return subtotal;
     }
 
     // cal the tax of all product store in product_list
-    public double calTax(Tax tax){
-        double tax_rate = tax.getTax_rate();
-        double total_tax = 0;
-        for (Product product: product_list){
+    public BigDecimal calTax(Tax tax){
+        BigDecimal taxRate = tax.getTaxRate();
+        BigDecimal totalTax = new BigDecimal(0);
+        for (Product product: productList){
             if (!tax.isExempted(product.category)){
-                total_tax += product.totalPrice() * tax_rate;
+                totalTax = totalTax.add(product.totalPrice().multiply(taxRate)) ;
             }
         }
-        return total_tax;
+        return totalTax;
     }
 
 

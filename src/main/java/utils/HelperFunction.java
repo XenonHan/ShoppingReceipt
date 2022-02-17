@@ -5,6 +5,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 // This class store the helper functions
-public class Helper_fun {
+public class HelperFunction {
 
     // Convert JSONArray to list
     public static List<String> JSONArray_to_list(JSONArray arr){
@@ -65,8 +66,9 @@ public class Helper_fun {
     }
 
     // roundup the value to nearest 0.05
-    public static double myRound(double value){
-        return Math.ceil(value * 20)/20.0;
+    public static BigDecimal myRound(BigDecimal value){
+//        return value.multiply(BigDecimal.valueOf(20)).setScale(0, RoundingMode.CEILING).divide(BigDecimal.valueOf(20),RoundingMode.UNNECESSARY);
+        return BigDecimal.valueOf(Math.ceil(value.doubleValue()*20)/20);
     }
 
 

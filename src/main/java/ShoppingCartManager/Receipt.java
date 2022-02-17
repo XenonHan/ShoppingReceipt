@@ -1,16 +1,18 @@
 package ShoppingCartManager;
 
-import utils.Helper_fun;
+import utils.HelperFunction;
+
+import java.math.BigDecimal;
 
 public class Receipt {
-    private final double subtotal;
-    private final double tax;
-    private final double total;
+    private final BigDecimal subtotal;
+    private final BigDecimal tax;
+    private final BigDecimal total;
 
-    public Receipt(double subtotal, double tax){
+    public Receipt(BigDecimal subtotal, BigDecimal tax){
         this.subtotal = subtotal;
-        this.tax = Helper_fun.myRound(tax);
-        this.total = this.subtotal + this.tax;
+        this.tax = HelperFunction.myRound(tax);
+        this.total = this.subtotal.add(this.tax);
     }
 
     public void show(){
