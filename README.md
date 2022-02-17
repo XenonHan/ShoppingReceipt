@@ -5,7 +5,7 @@ This program prints the receipt according to the shopping cart record. The sales
 2. Run Main.java under "src\main\java". <br>
 3. Input the transaction file name e.g. transaction_1
 
-<h3> Run on terminal </h3>
+<h3> Run on command prompt </h3>
 1. cd to the project directory <br>
 2. Run command "mvn compile" <br>
 3. Run command "mvn exec:java -Dexec.mainClass=Main" <br>
