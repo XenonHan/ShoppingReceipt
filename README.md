@@ -7,9 +7,16 @@ This program prints the receipt according to the shopping cart record. The sales
 
 <h3> Run on command prompt </h3>
 1. cd to the project directory <br>
-2. Run command "mvn compile" <br>
-3. Run command "mvn exec:java -Dexec.mainClass=Main" <br>
-4. Input the transaction file name e.g. transaction_1
+2. Run below commands: 
+
+```
+mvn compile
+```
+```
+mvn exec:java -Dexec.mainClass=Main
+```
+<span>3. Input the transaction file name e.g. transaction_1 </span>
+
 <h3> Preview </h3>
 
 <p float="left">
@@ -48,8 +55,13 @@ This program prints the receipt according to the shopping cart record. The sales
 
 <h2> Coverage Report </h2>
 1. Go to the home directory of this project <br>
-2. run "mvn test" <br>
-3. Open the index.html under ./target/site/jacoco
+2. run 
+
+``` 
+mvn test 
+```
+
+<span> 3. Open the index.html under ./target/site/jacoco </span>
 <h3> Preview </h3>
 
 <p> 
