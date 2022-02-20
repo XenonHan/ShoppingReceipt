@@ -13,7 +13,7 @@ This program prints the receipt according to the shopping cart record. The sales
 mvn compile
 ```
 ```
-mvn exec:java -Dexec.mainClass=Main
+mvn exec:java -D"exec.mainClass"="Main"
 ```
 <span>3. Input the transaction file name e.g. transaction_1 </span>
 
